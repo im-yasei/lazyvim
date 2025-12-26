@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- jj works like Esc
+-- ii works like Esc
 vim.api.nvim_set_keymap("i", "ii", "<Esc>", { noremap = false })
 
 -- Disabling arrows
@@ -46,16 +46,14 @@ local set_root = function()
   return root
 end
 
--- Функция для открытия toggleterm в корне проекта
+-- toggleterm in the root dir
 local open_terminal_in_root = function()
   local root = set_root()
   if root then
-    -- Проверяем, установлен ли toggleterm
     local status_ok, toggleterm = pcall(require, "toggleterm")
     if status_ok then
       toggleterm.toggle()
     else
-      -- Альтернатива если toggleterm не установлен
       vim.cmd("terminal")
     end
   else
@@ -63,7 +61,6 @@ local open_terminal_in_root = function()
   end
 end
 
--- Автоматическое определение корня при смене буфера
 local root_augroup = vim.api.nvim_create_augroup("MyAutoRoot", {})
 vim.api.nvim_create_autocmd("BufEnter", {
   group = root_augroup,
@@ -71,13 +68,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Hotkeys terminal root dir
-vim.keymap.set("n", "<leader>fT", open_terminal_in_root, {
+vim.keymap.set("n", "<leader>ft", open_terminal_in_root, {
   desc = "Terminal (root dir)",
 })
 
 -- Hotkeys terminal cwd
 vim.api.nvim_create_user_command("TerminalFileDir", ":ToggleTerm dir=%:p:h<CR>", {})
-vim.keymap.set("n", "<leader>ft", ":TerminalFileDir<CR>", { desc = "Terminal (cwd)" })
+vim.keymap.set("n", "<leader>fT", ":TerminalFileDir<CR>", { desc = "Terminal (cwd)" })
 
 -- Enter normal mode from terminal mode
 vim.api.nvim_set_keymap("t", "ii", "<C-\\><C-n>", { noremap = false, silent = true })
