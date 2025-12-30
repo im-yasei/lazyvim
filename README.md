@@ -10,8 +10,8 @@
 - [folke/snacks.nvim](https://github.com/folke/snacks.nvim) - Apache 2.0
 - [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Apache 2.0
 - [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - MIT
-- [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - MIT
 - [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) - MIT
+- [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - GPL-3.0
 
 ### Original work
 - The custom ASCII art header in `lua/plugins/snacks.lua`.
